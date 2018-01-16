@@ -18,9 +18,9 @@ class EventsManager {
           type: 'GET',
           success: (data) =>{
             if (data.msg=="OK") {
-              this.poblarCalendario(data.eventos)
+              this.poblarCalendario(data.eventos);
             }else {
-              alert(data.msg)
+              alert(data.msg);
               window.location.href = 'index.html';
             }
           },

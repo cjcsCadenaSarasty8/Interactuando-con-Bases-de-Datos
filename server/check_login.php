@@ -1,23 +1,34 @@
 <?php
 
+    $UserName=$_POST['username'];
+    $Password=$_POST['password'];
     include 'conexionBD.php';
     IniciarSesion();
     function IniciarSesion(){
-       $UserName="Robert@msn.com";
-       $Password="123456";
+       $Retorno="";
        IniciarConexion();
-       $Consulta="Select * from usuario where Username='".$UserName."'";
-       $Resultado= ($GLOBALS['Conexion']->query($Consulta));
+       $IdUser=0;
+       $Nombre="";
+       $Consulta="Select * from usuario where Username='".$GLOBALS['UserName']."'";
+       $Resultado= $GLOBALS['Conexion']->query($Consulta);
+       if(mysqli_num_rows($Resultado)==0){
+           $Retorno="Usuario o Contraseña incorrecta";
+       }else{
        while ($fila = mysqli_fetch_array($Resultado)){
-            if(password_verify($Password,$fila['Password'])){
-                echo "Inicio Sesión Resultado: Exitoso";
+            if(password_verify($GLOBALS['Password'],$fila['Password'])){
+               $IdUser=$fila['Id'];
+               $Nombre=$fila['Nombre'];
+               setcookie('IdUser',$IdUser);
+               setcookie('Nombre',$Nombre);
+               $Retorno="OK";
             }
             else{
-                echo "Inicio Sesión Resultado: Fallido";
+                $Retorno="Usuario o Contraseña incorrecta";
             }
         }
-       
+       }
        DesactivarConexion();
+       echo json_encode(array("msg"=>"OK"));
     }
 
 
