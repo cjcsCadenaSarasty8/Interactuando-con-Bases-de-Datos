@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-01-2018 a las 04:58:24
+-- Tiempo de generación: 17-01-2018 a las 04:47:36
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `examen`
 --
+CREATE DATABASE IF NOT EXISTS `examen` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `examen`;
 
 -- --------------------------------------------------------
 
@@ -31,20 +33,13 @@ SET time_zone = "+00:00";
 CREATE TABLE `evento` (
   `Id` int(11) NOT NULL,
   `IdUsuario` int(11) DEFAULT NULL,
-  `Titulo` varchar(30) NOT NULL,
+  `Titulo` varchar(20) NOT NULL,
   `FechaInicio` date NOT NULL,
   `HoraInicio` time DEFAULT NULL,
   `FechaFinalizacion` date DEFAULT NULL,
   `HoraFinalizacion` time DEFAULT NULL,
   `DiaCompleto` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `evento`
---
-
-INSERT INTO `evento` (`Id`, `IdUsuario`, `Titulo`, `FechaInicio`, `HoraInicio`, `FechaFinalizacion`, `HoraFinalizacion`, `DiaCompleto`) VALUES
-(1, NULL, '', '0000-00-00', NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -56,8 +51,8 @@ CREATE TABLE `usuario` (
   `Id` int(11) NOT NULL,
   `Nombre` varchar(100) NOT NULL,
   `FechaNacimiento` date NOT NULL,
-  `Username` varchar(200) NOT NULL,
-  `Password` varchar(200) NOT NULL
+  `Username` varchar(100) NOT NULL,
+  `Password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -71,6 +66,12 @@ ALTER TABLE `evento`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -78,7 +79,13 @@ ALTER TABLE `evento`
 -- AUTO_INCREMENT de la tabla `evento`
 --
 ALTER TABLE `evento`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
