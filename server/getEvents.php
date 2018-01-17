@@ -14,7 +14,9 @@
             $Eventos=$Eventos.",".json_encode(array("id"=> $fila['Id'], "title"=> $fila['Titulo'], "start"=> $fila['FechaInicio']." ". $fila['HoraInicio'], "allDay"=> $fila['DiaCompleto'], "end"=> $fila['FechaFinalizacion']." ".$fila['HoraFinalizacion']));
           }
         }
-        $Eventos=$Eventos."]";
+        if(!empty($Eventos)){
+          $Eventos=$Eventos."]";
+        }
        DesactivarConexion();
        echo $Eventos;
 
