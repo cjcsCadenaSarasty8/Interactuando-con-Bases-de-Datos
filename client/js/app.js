@@ -11,14 +11,15 @@ class EventsManager {
         let url = '../server/getEvents.php'
         $.ajax({
           url: url,
-          dataType: "json",
           cache: false,
           processData: false,
           contentType: false,
           type: 'GET',
           success: (data) =>{
             //if (data.msg=="OK") {
+            if(data!=null){
               this.poblarCalendario(data);
+            }
             //}else {
               //alert(data.msg);
               //window.location.href = 'index.html';
@@ -38,7 +39,7 @@ class EventsManager {
         		center: 'title',
         		right: 'month,agendaWeek,basicDay'
         	},
-        	defaultDate: '2016-11-01',
+        	defaultDate: Date.getdate,
         	navLinks: true,
         	editable: true,
         	eventLimit: true,
