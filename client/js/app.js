@@ -17,12 +17,12 @@ class EventsManager {
           contentType: false,
           type: 'GET',
           success: (data) =>{
-            if (data.msg=="OK") {
-              this.poblarCalendario(data.eventos);
-            }else {
-              alert(data.msg);
-              window.location.href = 'index.html';
-            }
+            //if (data.msg=="OK") {
+              this.poblarCalendario(data);
+            //}else {
+              //alert(data.msg);
+              //window.location.href = 'index.html';
+            //}
           },
           error: function(){
             alert("error en la comunicación con el servidor");
@@ -97,12 +97,14 @@ class EventsManager {
             alert('Se ha añadido el evento exitosamente')
             if (document.getElementById('allDay').checked) {
               $('.calendario').fullCalendar('renderEvent', {
+                id: data.Id,
                 title: $('#titulo').val(),
                 start: $('#start_date').val(),
                 allDay: true
               })
             }else {
               $('.calendario').fullCalendar('renderEvent', {
+                id: data.Id,
                 title: $('#titulo').val(),
                 start: $('#start_date').val()+" "+$('#start_hour').val(),
                 allDay: false,

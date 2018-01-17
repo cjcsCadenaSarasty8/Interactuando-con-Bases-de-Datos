@@ -16,7 +16,7 @@
     VALUES (".$_COOKIE['IdUser'].", '".$GLOBALS['Titulo']."', '".$GLOBALS['FechaInicio']."', '".$GLOBALS['HoraInicial']."', '".$GLOBALS['FechaFinal']."', '".$GLOBALS['HoraFinal']."', '".$GLOBALS['TodoDia']."')";
 
     if ($GLOBALS['Conexion']->query($Consulta) === TRUE) {
-        echo json_encode(array("msg"=>"OK"));
+        echo json_encode(array("msg"=>"OK","Id"=>$GLOBALS['Conexion']->insert_id));
     } else {
         echo json_encode(array("msg"=>"Error Al registrar el evento"));
     }
