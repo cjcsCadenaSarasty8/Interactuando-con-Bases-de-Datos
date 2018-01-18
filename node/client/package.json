@@ -1,0 +1,19 @@
+{
+  "name": "examen",
+  "version": "1.0.0",
+  "description": "examen final interactuando con bases de datos",
+  "main": "js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjcsCadenaSarasty8/Interactuando-con-Bases-de-Datos.git"
+  },
+  "author": "carlos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjcsCadenaSarasty8/Interactuando-con-Bases-de-Datos/issues"
+  },
+  "homepage": "https://github.com/cjcsCadenaSarasty8/Interactuando-con-Bases-de-Datos#readme"
+}
