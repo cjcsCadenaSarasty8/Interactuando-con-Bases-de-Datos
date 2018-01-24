@@ -1,4 +1,3 @@
-
 class EventManager {
     constructor() {
         this.urlBase = "/events"
@@ -22,8 +21,8 @@ class EventManager {
     }
 
     guardarEvento() {
-        $('.addButton').on('click', (ev) => {
-            ev.preventDefault()
+        $('.addButton').on('click', (evento) => {
+            evento.preventDefault()
             let nombre = $('#titulo').val(),
             start = $('#start_date').val(),
             title = $('#titulo').val(),
@@ -87,7 +86,7 @@ class EventManager {
                 center: 'title',
                 right: 'month,agendaWeek,basicDay'
             },
-            defaultDate: '2016-11-01',
+            defaultDate: Date.getdate,
             navLinks: true,
             editable: true,
             eventLimit: true,
