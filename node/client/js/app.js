@@ -13,9 +13,20 @@ class EventManager {
         })
     }
 
+    actualizarEvento(evento) {
+        $.post('/events/update/',
+        {
+          id: evento.id,
+          start:evento.start,
+          end:evento.end
+        }, (response) => {
+            alert(response)
+        })
+    }
+
     eliminarEvento(evento) {
         let eventId = evento.id
-        $.post('/events/delete/'+eventId, {id: eventId}, (response) => {
+        $.post('/events/delete/', {id: eventId}, (response) => {
             alert(response)
         })
     }
@@ -44,10 +55,17 @@ class EventManager {
                     start: start,
                     end: end
                 }
-                $.post(url, ev, (response) => {
-                    alert(response)
+                var Id="";
+                $.post(url, ev, function(response) {
+                  $('.calendario').fullCalendar('renderEvent', {
+                    id: response,
+                    title: $('#titulo').val(),
+                    start: start,
+                    end: end
+                  })
                 })
-                $('.calendario').fullCalendar('renderEvent', ev)
+
+//                $('.calendario').fullCalendar('renderEvent', ev)
             } else {
                 alert("Complete los campos obligatorios para el evento")
             }
@@ -98,7 +116,7 @@ class EventManager {
             },
             events: eventos,
             eventDragStart: (event,jsEvent) => {
-                $('.delete').find('img').attr('src', "img/trash-open.png");
+                $('.delete').find('img').attr('src', "../img/trash-open.png");
                 $('.delete').css('background-color', '#a70f19')
             },
             eventDragStop: (event,jsEvent) => {
