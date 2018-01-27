@@ -2,7 +2,8 @@ var express = require('express');
 var app = express();
 var body_parser = require('body-parser');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/examen');
+//mongoose.connect('mongodb://localhost:27017/examen');
+mongoose.connect('mongodb://carlos:123456@ds217138.mlab.com:17138/examen');
 var Schema = mongoose.Schema;
 
 var IDUsuario="";
@@ -98,9 +99,9 @@ app.get("/events/all",function(req,res){
     }
     if(consulta!=''){
       consulta=consulta+']';
-      //Retorno=JSON.parse(consulta);
+      Retorno=JSON.parse(consulta);
     }
-    console.log(consulta);
+    //console.log(consulta);
     res.end(consulta);
   });
 })
