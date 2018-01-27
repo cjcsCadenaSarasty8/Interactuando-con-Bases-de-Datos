@@ -28,7 +28,7 @@
         }
        }
        DesactivarConexion();
-       echo json_encode(array("msg"=>"OK"));
+       echo json_encode(array("msg"=>$Retorno));
     }
 
 
